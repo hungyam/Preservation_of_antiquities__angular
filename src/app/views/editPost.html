@@ -1,0 +1,10 @@
+
+<div class="topblock"><span class="options">User : {{user.username}}</span><span><a href="/logout">Log out</a></span></div>
+<h2>Edit post</h2>
+<label for="title">Title: </label>
+<input ng-model="form.title" name="title" class="inputbox"/>
+<p>Body:</p>
+<textarea ng-model="form.text" class="inputbox textbox"></textarea>
+<p>
+  <button ng-click="editPost()">Edit Post</button>
+</p>

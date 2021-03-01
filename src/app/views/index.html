@@ -1,0 +1,19 @@
+
+<div class="topblock"><span class="options">Search : 
+    <input ng-model="search" class="inputbox search"/></span><span class="options">User : {{user.username}}</span><span><a href="/logout">Log out</a></span></div>
+<p>There are {{count}} posts</p>
+<hr class="topline"/>
+<div class="posttext">
+  <div ng-repeat="post in posts | filter:search" class="post">
+    <label class="time">{{post.date}}</label>
+    <h2>{{post.title}}</h2>
+    <p class="paragraph">{{post.text}}</p>
+    <div class="tag"><a ng-hide="post.hide &amp;&amp; !post.isAuthor" href="/readPost/{{post.id}}" class="line">More & Comment</a>
+      <div ng-show="post.isAuthor" class="line"> -- <a href="/editPost/{{post.id}}">Edit</a> -- <a href="/deletePost/{{post.id}}">Delete</a></div>
+      <div ng-show="isAdmin &amp;&amp; !post.hide" class="line"> <<<<a ng-click="Hide($index)">Hide(Admin)</a></div>
+      <div ng-show="isAdmin &amp;&amp; post.hide" class="line"> <<<<a ng-click="Restore($index)">Restore(Admin)</a></div>
+      <div class="signature">----------------{{post.author}}</div>
+    </div>
+  </div>
+</div>
+<div class="pagebar"><a ng-click="page_head()" class="line pageblock"><<</a><a ng-click="page_up()" class="line pageblock"><</a><a ng-repeat="no in page" ng-click="page_no(no.no)" class="line pageblock show-{{no.true}}">{{no.no}}</a><a ng-click="page_next()" class="line pageblock">></a><a ng-click="page_last()" class="line pageblock">>></a></div>

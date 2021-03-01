@@ -1,0 +1,55 @@
+
+<script type="text/javascript" src="js/signup.js" defer="defer"></script>
+<script type="text/javascript" src="js/valiset.js" defer="defer"></script>
+<h1>注册</h1>
+<div class="text">
+  <h2>用户注册</h2>
+  <table> 
+    <tr>
+      <td class="left">用户名</td>
+      <td class="right">
+        <input ng-model="form.username" id="username" name="username" placeholder="请输入用户名" value="" class="inputbox"/>
+      </td>
+      <td class="error"></td>
+    </tr>
+    <tr>
+      <td class="left">学号</td>
+      <td class="right">
+        <input ng-model="form.id" id="id" name="id" placeholder="请输入学号" value="" class="inputbox"/>
+      </td>
+      <td class="error"> </td>
+    </tr>
+    <tr>
+      <td class="left">电话</td>
+      <td class="right">
+        <input ng-model="form.tel" id="tel" name="tel" placeholder="请输入电话" value="" class="inputbox"/>
+      </td>
+      <td class="error"> </td>
+    </tr>
+    <tr>
+      <td class="left">邮箱</td>
+      <td class="right">
+        <input ng-model="form.email" id="email" name="email" placeholder="请输入邮箱" value="" class="inputbox"/>
+      </td>
+      <td class="error"> </td>
+    </tr>
+    <tr>
+      <td class="left">密码</td>
+      <td class="right">
+        <input ng-model="form.key" id="key" name="key" placeholder="请输入密码" value="" class="inputbox"/>
+      </td>
+      <td class="error"> </td>
+    </tr>
+    <tr>
+      <td class="left">重复密码</td>
+      <td class="right">
+        <input ng-model="form.re_key" id="re_key" name="re_key" placeholder="请输入密码" value="" class="inputbox"/>
+      </td>
+      <td class="error"> </td>
+    </tr>
+  </table>
+  <div class="buttonblock">
+    <button ng-click="reset()" class="reset">重置</button>
+    <button ng-click="regist()" class="submit">提交</button>
+  </div>
+</div>
