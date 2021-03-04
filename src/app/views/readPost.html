@@ -6,7 +6,7 @@
   <div class="author">------------ {{post.author}}</div>
   <h3>Comments </h3><span>There are {{post.comments.length}} comments.</span>
   <div class="post">
-    <div ng-repeat="comment in post.comments" class="comment">
+    <div ng-repeat="comment in posts.comments" class="comment">
       <div>{{comment.text}}</div>
       <div class="tag">
         <div ng-show="comment.isAuthor" class="line"><a ng-click="delete($index)">delete</a></div>
