@@ -33,7 +33,10 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/scripts/signup.js",
+              "src/scripts/valiset.js"
+            ]
           },
           "configurations": {
             "production": {

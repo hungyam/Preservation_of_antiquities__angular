@@ -4,12 +4,14 @@ import {SigninComponent} from './signin/signin.component';
 import {RegistComponent} from './regist/regist.component';
 import {LogoutComponent} from './logout/logout.component';
 import {HomeComponent} from './home/home.component';
+import {AddPostComponent} from './add-post/add-post.component';
 
 const routes: Routes = [
   {path: 'signin' , component: SigninComponent},
   {path: 'regist' , component: RegistComponent},
   {path: 'logout' , component: LogoutComponent},
   {path: 'home' , component: HomeComponent},
+  {path: 'addPost' , component: AddPostComponent},
   {path: '' , redirectTo: 'signin', pathMatch: 'full'}
 ];
 
