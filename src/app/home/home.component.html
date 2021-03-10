@@ -9,7 +9,7 @@
       <label class="time">{{post.date}}</label>
       <h2>{{post.title}}</h2>
       <p class="paragraph">{{post.text}}</p>
-      <div class="tag"><a ng-hide="posts.hide &amp;&amp; !posts.isAuthor" href="/readPost/{{post.id}}" class="line">More&Comment</a>
+      <div class="tag"><a ng-hide="posts.hide &amp;&amp; !posts.isAuthor" routerLink="/readPost/{{post.id}}" class="line">More&Comment</a>
         <div ng-show="posts.isAuthor" class="line"> -- <a href="/editPost/{{post.id}}">Edit</a> -- <a
           href="/deletePost/{{post.id}}">Delete</a></div>
         <div ng-show="isAdmin &amp;&amp; !posts.hide" class="line"> <<<<a ng-click="Hide($index)">Hide(Admin)</a></div>

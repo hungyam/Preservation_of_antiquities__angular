@@ -5,14 +5,20 @@ import {RegistComponent} from './regist/regist.component';
 import {LogoutComponent} from './logout/logout.component';
 import {HomeComponent} from './home/home.component';
 import {AddPostComponent} from './add-post/add-post.component';
+import {ReadPostComponent} from './read-post/read-post.component';
+import {EditPostComponent} from './edit-post/edit-post.component';
+import { DeletePostComponent } from './delete-post/delete-post.component';
 
 const routes: Routes = [
-  {path: 'signin' , component: SigninComponent},
+  // {path: 'signin' , component: SigninComponent},
   {path: 'regist' , component: RegistComponent},
   {path: 'logout' , component: LogoutComponent},
   {path: 'home' , component: HomeComponent},
-  {path: 'addPost' , component: AddPostComponent},
-  {path: '' , redirectTo: 'signin', pathMatch: 'full'}
+  // {path: 'readPost/:id' , component: ReadPostComponent},
+  // {path: 'editPost/:id' , component: EditPostComponent},
+  // {path: 'deletePost/:id' , component: DeletePostComponent},
+  // {path: 'addPost' , component: AddPostComponent},
+  {path: '' , redirectTo: 'regist', pathMatch: 'full'}
 ];
 
 @NgModule({

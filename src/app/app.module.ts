@@ -11,23 +11,25 @@ import { AddPostComponent } from './add-post/add-post.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { DeletePostComponent } from './delete-post/delete-post.component';
 import { ReadPostComponent } from './read-post/read-post.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SigninComponent,
+    // SigninComponent,
     RegistComponent,
     LogoutComponent,
     HomeComponent,
-    AddPostComponent,
-    EditPostComponent,
-    DeletePostComponent,
-    ReadPostComponent
+    // AddPostComponent,
+    // EditPostComponent,
+    // DeletePostComponent,
+    // ReadPostComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

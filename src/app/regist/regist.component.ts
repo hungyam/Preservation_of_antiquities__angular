@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {formType} from './formType';
 
 @Component({
   selector: 'app-regist',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./regist.component.css']
 })
 export class RegistComponent implements OnInit {
-
+  form!:formType;
   constructor() { }
 
   ngOnInit(): void {

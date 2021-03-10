@@ -1,0 +1,27 @@
+<div class="rightBlock">
+  <div class="topblock"><span class="options">User : {{user.username}}</span><span><a href="/logout">Log out</a></span>
+  </div>
+  <section>
+    <h2>{{post.title}}</h2>
+    <p>{{post.text}}</p>
+    <div class="author">------------ {{post.author}}</div>
+    <h3>Comments </h3><span>There are {{post.comments.length}} comments.</span>
+    <div class="post">
+      <div *ngFor="let comment of post.comments" class="comment">
+        <div>{{comment.text}}</div>
+        <div class="tag">
+<!--          <div *ngIf="comment.isAuthor" class="line"><a (click)="delete($index)">delete</a></div>-->
+<!--          <div *ngIf="isAdmin && !comment.hide" class="line"> <<<<a (click)="Hide($index)">Hide(Admin)</a>-->
+          </div>
+<!--          <div *ngIf="isAdmin && comment.hide" class="line"> <<<<a-->
+<!--            (click)="Restore($index)">Restore(Admin)</a></div>-->
+          <div class="signature">-----------S By : {{comment.by}}</div>
+        </div>
+      </div>
+    <h4>Leave a comment :</h4>
+    <textarea ng-model="comment.text" class="inputbox textbox"></textarea>
+    <div>
+      <button ng-click="submit()">Submit Comment</button>
+    </div>
+  </section>
+</div>
