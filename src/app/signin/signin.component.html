@@ -2,23 +2,27 @@
   <h1>Sign In</h1>
   <div class="text">
     <h2>用户登陆</h2>
-    <table>
-      <tr>
-        <td class="left">用户名</td>
-        <td class="right">
-          <input ng-model="form.username" id="username" name="username" placeholder="请输入用户名" value="" class="inputbox"/>
-        </td>
-      </tr>
-      <tr>
-        <td class="left">密码</td>
-        <td class="right">
-          <input ng-model="form.key" id="key" name="key" placeholder="请输入密码" value="" class="inputbox"/>
-        </td>
-      </tr>
-    </table><span class="warning">{{error}}</span>
-    <div class="buttonblock">
-      <button><a href="/regist" class="white">注册</a></button>
-      <button ng-click="signin()" class="submit">登陆</button>
-    </div>
+    <form [formGroup]="signin" (ngSubmit)="onSubmit()">
+      <table>
+        <tr>
+          <td class="left">用户名</td>
+          <td class="right">
+            <input [(ngModel)]="form.username" id="username" name="username" placeholder="请输入用户名" value=""
+                   class="inputbox"/>
+          </td>
+        </tr>
+        <tr>
+          <td class="left">密码</td>
+          <td class="right">
+            <input [(ngModel)]="form.key" id="key" name="key" placeholder="请输入密码" value="" class="inputbox"/>
+          </td>
+        </tr>
+      </table>
+      <span class="warning">{{error}}</span>
+      <div class="buttonblock">
+        <button><a href="/regist" class="white">注册</a></button>
+        <button ng-click="signin()" class="submit">登陆</button>
+      </div>
+    </form>
   </div>
 </div>

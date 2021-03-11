@@ -10,7 +10,7 @@ import {EditPostComponent} from './edit-post/edit-post.component';
 import { DeletePostComponent } from './delete-post/delete-post.component';
 
 const routes: Routes = [
-  // {path: 'signin' , component: SigninComponent},
+  {path: 'signin' , component: SigninComponent},
   {path: 'regist' , component: RegistComponent},
   {path: 'logout' , component: LogoutComponent},
   {path: 'home' , component: HomeComponent},

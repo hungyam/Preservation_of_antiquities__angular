@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {formType} from '../regist/formType';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-signin',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
+  form!: formType;
+  signin!: FormGroup;
   error = '';
-  constructor() { }
+  onSubmit(): void {
+  }
+  constructor() {
+  }
 
   ngOnInit(): void {
+    this.form = new formType('', '', '', '', '', '');
   }
 
 }
