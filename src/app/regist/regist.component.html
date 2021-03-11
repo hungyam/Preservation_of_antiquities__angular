@@ -2,53 +2,60 @@
   <h1>注册</h1>
   <div class="text">
     <h2>用户注册</h2>
-    <table>
-      <tr>
-        <td class="left">用户名</td>
-        <td class="right">
-          <input [(ngModel)]="form.username" id="username" name="username" placeholder="请输入用户名" class="inputbox" #username='ngModel'/>
-        </td>
-        <td class="error" [hidden]="username.valid || username.pristine">用户名6~18位英文字母、数字或下划线，必须以英文字母开头</td>
-      </tr>
-      <tr>
-        <td class="left">学号</td>
-        <td class="right">
-          <input [(ngModel)]="form.id" id="id" name="id" placeholder="请输入学号" value="" class="inputbox" #id='ngModel'/>
-        </td>
-        <td class="error" [hidden]="id.valid || id.pristine"></td>
-      </tr>
-      <tr>
-        <td class="left">电话</td>
-        <td class="right">
-          <input [(ngModel)]="form.tel" id="tel" name="tel" placeholder="请输入电话" value="" class="inputbox" #tel='ngModel'/>
-        </td>
-        <td class="error" [hidden]="tel.valid || tel.pristine"></td>
-      </tr>
-      <tr>
-        <td class="left">邮箱</td>
-        <td class="right">
-          <input [(ngModel)]="form.email" id="email" name="email" placeholder="请输入邮箱" value="" class="inputbox" #email='ngModel'/>
-        </td>
-        <td class="error" [hidden]="email.valid || email.pristine"></td>
-      </tr>
-      <tr>
-        <td class="left">密码</td>
-        <td class="right">
-          <input [(ngModel)]="form.key" id="key" name="key" placeholder="请输入密码" value="" class="inputbox" #key='ngModel'/>
-        </td>
-        <td class="error" [hidden]="key.valid || key.pristine"></td>
-      </tr>
-      <tr>
-        <td class="left">重复密码</td>
-        <td class="right">
-          <input [(ngModel)]="form.re_key" id="re_key" name="re_key" placeholder="请输入密码" value="" class="inputbox" #re_key='ngModel'/>
-        </td>
-        <td class="error" [hidden]="re_key.valid || re_key.pristine"></td>
-      </tr>
-    </table>
-    <div class="buttonblock">
-      <button type='reset' ng-click="reset()" class="reset">重置</button>
-      <button type='submit' ng-click="regist()" class="submit">提交</button>
-    </div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="regist">
+      <table>
+        <tr>
+          <td class="left">用户名</td>
+          <td class="right">
+            <input [(ngModel)]="form.username" id="username" name="username" placeholder="请输入用户名" class="inputbox"
+                   formControlName="username"/>
+          </td>
+          <td class="error" [hidden]="!check.username.errors||check.username.pristine">用户名6~18位英文字母、数字或下划线，必须以英文字母开头</td>
+        </tr>
+        <tr>
+          <td class="left">学号</td>
+          <td class="right">
+            <input [(ngModel)]="form.id" id="id" name="id" placeholder="请输入学号" value="" class="inputbox" formControlName="id"/>
+          </td>
+          <td class="error" [hidden]="!check.id.errors||check.id.pristine">学号8位数字，不能以0开头</td>
+        </tr>
+        <tr>
+          <td class="left">电话</td>
+          <td class="right">
+            <input [(ngModel)]="form.tel" id="tel" name="tel" placeholder="请输入电话" value="" class="inputbox"
+                   formControlName="tel"/>
+          </td>
+          <td class="error" [hidden]="!check.tel.errors||check.tel.pristine">电话11位数字，不能以0开头</td>
+        </tr>
+        <tr>
+          <td class="left">邮箱</td>
+          <td class="right">
+            <input [(ngModel)]="form.email" id="email" name="email" placeholder="请输入邮箱" value="" class="inputbox"
+                   formControlName="email"/>
+          </td>
+          <td class="error" [hidden]="!check.email.errors||check.email.pristine">邮箱格式不正确</td>
+        </tr>
+        <tr>
+          <td class="left">密码</td>
+          <td class="right">
+            <input type="password" [(ngModel)]="form.key" id="key" name="key" placeholder="请输入密码" value="" class="inputbox"
+                   formControlName="password"/>
+          </td>
+          <td class="error" [hidden]="!check.password.errors||check.password.pristine">密码为6~12位数字、大小写字母、中划线、下划线</td>
+        </tr>
+        <tr>
+          <td class="left">重复密码</td>
+          <td class="right">
+            <input type="password" [(ngModel)]="form.re_key" id="re_key" name="re_key" placeholder="请输入密码" value="" class="inputbox"
+                   formControlName="re_password"/>
+          </td>
+          <td class="error" [hidden]="!check.re_password.errors||check.re_password.pristine">两次密码不一致</td>
+        </tr>
+      </table>
+      <div class="buttonblock">
+        <button type='reset' ng-click="reset()" class="reset">重置</button>
+        <button type='submit' ng-click="regist()" class="submit" [disabled]="regist.invalid">提交</button>
+      </div>
+    </form>
   </div>
 </div>

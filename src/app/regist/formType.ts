@@ -4,8 +4,8 @@ export class formType extends User {
   public re_key:string;
   constructor(
     username:string,
-    id:number,
-    tel:number,
+    id:string,
+    tel:string,
     email:string,
     key:string,
     re_key:string

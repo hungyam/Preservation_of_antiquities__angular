@@ -11,7 +11,7 @@ import { AddPostComponent } from './add-post/add-post.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { DeletePostComponent } from './delete-post/delete-post.component';
 import { ReadPostComponent } from './read-post/read-post.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,11 +25,12 @@ import {FormsModule} from '@angular/forms';
     // DeletePostComponent,
     // ReadPostComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
