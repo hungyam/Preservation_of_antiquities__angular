@@ -2,7 +2,7 @@
   <h1>Sign In</h1>
   <div class="text">
     <h2>用户登陆</h2>
-    <form [formGroup]="signin" (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()">
       <table>
         <tr>
           <td class="left">用户名</td>
@@ -20,8 +20,8 @@
       </table>
       <span class="warning">{{error}}</span>
       <div class="buttonblock">
-        <button><a href="/regist" class="white">注册</a></button>
-        <button ng-click="signin()" class="submit">登陆</button>
+        <button><a routerLink="/regist" class="white">注册</a></button>
+        <button type='submit' class="submit">登陆</button>
       </div>
     </form>
   </div>

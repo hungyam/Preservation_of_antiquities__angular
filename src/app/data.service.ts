@@ -7,7 +7,12 @@ import { Md5 } from 'ts-md5';
 })
 export class DataService {
   constructor() { }
-  findUser(username:string, password:string){
-    Md5.hashStr()
+  static findUser(username:string, password:string){
+    let user=Users.find(obj => obj.username==username);
+    if(user && user.key==Md5.hashStr(password)){
+      return true;
+    }
+    return false;
   }
+
 }

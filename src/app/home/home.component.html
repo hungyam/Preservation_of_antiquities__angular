@@ -5,16 +5,16 @@
   <p>There are {{posts.length}} posts</p>
   <hr class="topline"/>
   <div class="posttext">
-    <div *ngFor="let post of posts " class="post">
+    <div *ngFor="let post of posts;let i = index" class="post">
       <label class="time">{{post.date}}</label>
       <h2>{{post.title}}</h2>
       <p class="paragraph">{{post.text}}</p>
       <div class="tag"><a ng-hide="posts.hide && !posts.isAuthor" routerLink="/readPost/{{post.id}}"
                           class="line">More&Comment</a>
-        <div ng-show="posts.isAuthor" class="line"> -- <a href="/editPost/{{post.id}}">Edit</a> -- <a
+        <div *ngIf="posts.isAuthor" class="line"> -- <a href="/editPost/{{post.id}}">Edit</a> -- <a
           href="/deletePost/{{post.id}}">Delete</a></div>
-        <div ng-show="isAdmin &&!posts.hide" class="line"> <<<<a ng-click="Hide($index)">Hide(Admin)</a></div>
-        <div ng-show="isAdmin && posts.hide" class="line"> <<<<a ng-click="Restore($index)">Restore(Admin)</a>
+        <div *ngIf="isAdmin &&!posts.hide" class="line"> <<<<a (click)="Hide(i)">Hide(Admin)</a></div>
+        <div *ngIf="isAdmin && posts.hide" class="line"> <<<<a (click)="Restore(i)">Restore(Admin)</a>
         </div>
         <div class="signature">----------------{{post.author}}</div>
       </div>

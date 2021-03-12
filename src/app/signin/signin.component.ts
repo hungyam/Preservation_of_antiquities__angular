@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {formType} from '../regist/formType';
-import {FormGroup} from '@angular/forms';
+import { formType } from './formType';
+import {DataService} from '../data.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -9,15 +10,18 @@ import {FormGroup} from '@angular/forms';
 })
 export class SigninComponent implements OnInit {
   form!: formType;
-  signin!: FormGroup;
   error = '';
+  constructor(private router:Router) { }
   onSubmit(): void {
+    if (DataService.findUser(<string> this.form.username,<string> this.form.key)){
+      localStorage.setItem('username',<string> this.form.username);
+      this.router.navigate(['home']).then(() => alert('Success!'));
+    }else{
+      this.error = 'Error!';
+    }
   }
-  constructor() {
-  }
-
   ngOnInit(): void {
-    this.form = new formType('', '', '', '', '', '');
+    this.form = new formType('','');
   }
 
 }
