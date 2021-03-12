@@ -17,7 +17,7 @@ export class RegistComponent implements OnInit {
   log!: string;
   constructor(private formBuilder: FormBuilder, private router: Router) { }
   onSubmit(): void {
-    sessionStorage.setItem('username', this.form.username);
+    localStorage.setItem('username', <string> this.form.username );
     const registerUser: User = this.form;
     Users.push(registerUser);
     this.router.navigate(['/home']);
