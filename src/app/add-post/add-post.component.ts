@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Users} from '../dataManage/Users';
 import {User} from '../dataManage/userType';
+import {formType} from '../edit-post/formType';
+import {DataService} from '../data.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-post',
@@ -9,10 +11,20 @@ import {User} from '../dataManage/userType';
 })
 export class AddPostComponent implements OnInit {
   user!: User;
-  constructor() { }
+  form!: formType;
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.user = Users[0];
+    if (!localStorage.getItem('username')) {
+      this.router.navigate(['signin'])
+        .then(() => alert('Please sign in or register fist!'));
+    }
+    this.user = new User(localStorage.getItem('username') as string);
+    this.form = new formType('', '');
   }
 
+  onSubmit(): void {
+    DataService.createPost(this.form.title, this.form.text);
+    this.router.navigate(['/home']);
+  }
 }

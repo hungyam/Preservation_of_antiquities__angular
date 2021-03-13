@@ -7,21 +7,25 @@
     <div class="author">------------ {{post.author}}</div>
     <h3>Comments </h3><span>There are {{post.comments.length}} comments.</span>
     <div class="post">
-      <div *ngFor="let comment of post.comments" class="comment">
-        <div>{{comment.text}}</div>
+      <div *ngFor="let comment of post.comments;let i = index" class="comment">
+        <div *ngIf="!comment.hide">{{comment.text}}</div>
+        <div class="error" *ngIf="comment.hide">This content is been hide by Admin!</div>
         <div class="tag">
-<!--          <div *ngIf="comment.isAuthor" class="line"><a (click)="delete($index)">delete</a></div>-->
-<!--          <div *ngIf="isAdmin && !comment.hide" class="line"> <<<<a (click)="Hide($index)">Hide(Admin)</a>-->
+          <div *ngIf="comment.isAuthor" class="line"><a (click)="delete(i)">delete</a></div>
+          <div *ngIf="isAdmin && !comment.hide" class="line"> <<<<a (click)="Hide(i)">Hide(Admin)</a>
           </div>
-<!--          <div *ngIf="isAdmin && comment.hide" class="line"> <<<<a-->
-<!--            (click)="Restore($index)">Restore(Admin)</a></div>-->
-          <div class="signature">-----------S By : {{comment.by}}</div>
+          <div *ngIf="isAdmin && comment.hide" class="line"> <<<<a
+            (click)="Restore(i)">Restore(Admin)</a></div>
+          <div class="signature">----------- By : {{comment.by}}</div>
         </div>
       </div>
-    <h4>Leave a comment :</h4>
-    <textarea ng-model="comment.text" class="inputbox textbox"></textarea>
-    <div>
-      <button ng-click="submit()">Submit Comment</button>
     </div>
+      <form (ngSubmit)="onSubmit()">
+        <h4>Leave a comment :</h4>
+        <textarea id='text' name='text' [(ngModel)]="text" class="inputbox textbox"></textarea>
+        <div>
+          <button type="submit">Submit Comment</button>
+        </div>
+      </form>
   </section>
 </div>

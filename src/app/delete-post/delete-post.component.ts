@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Post} from '../dataManage/postType';
 import {User} from '../dataManage/userType';
+import {ActivatedRoute, Router} from '@angular/router';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-delete-post',
@@ -10,9 +12,18 @@ import {User} from '../dataManage/userType';
 export class DeletePostComponent implements OnInit {
   post!: Post;
   user!: User;
-  constructor() { }
+  index!: number;
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    this.index = Number(this.route.snapshot.paramMap.get('id'));
   }
 
+  deletePost(): void {
+    DataService.deletePost(this.index);
+    this.router.navigate(['/home']).then(() => alert('succeeded'));
+  }
 }

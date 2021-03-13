@@ -20,10 +20,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     RegistComponent,
     LogoutComponent,
     HomeComponent,
-    // AddPostComponent,
-    // EditPostComponent,
-    // DeletePostComponent,
-    // ReadPostComponent
+    AddPostComponent,
+    EditPostComponent,
+    DeletePostComponent,
+    ReadPostComponent
   ],
   imports: [
     BrowserModule,

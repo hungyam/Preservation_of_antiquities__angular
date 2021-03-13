@@ -14,10 +14,10 @@ const routes: Routes = [
   {path: 'regist' , component: RegistComponent},
   {path: 'logout' , component: LogoutComponent},
   {path: 'home' , component: HomeComponent},
-  // {path: 'readPost/:id' , component: ReadPostComponent},
-  // {path: 'editPost/:id' , component: EditPostComponent},
-  // {path: 'deletePost/:id' , component: DeletePostComponent},
-  // {path: 'addPost' , component: AddPostComponent},
+  {path: 'readPost/:id' , component: ReadPostComponent},
+  {path: 'editPost/:id' , component: EditPostComponent},
+  {path: 'deletePost/:id' , component: DeletePostComponent},
+  {path: 'addPost' , component: AddPostComponent},
   {path: '' , redirectTo: 'regist', pathMatch: 'full'}
 ];
 

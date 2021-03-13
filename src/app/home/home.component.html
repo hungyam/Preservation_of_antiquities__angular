@@ -1,21 +1,22 @@
 <div class="rightBlock">
   <div class="topblock"><span
     class="options">User : {{user.username}}</span><span><a
-    href="/logout">Log out</a></span></div>
+    routerLink="/logout">Log out</a></span></div>
   <p>There are {{posts.length}} posts</p>
   <hr class="topline"/>
   <div class="posttext">
     <div *ngFor="let post of posts;let i = index" class="post">
       <label class="time">{{post.date}}</label>
       <h2>{{post.title}}</h2>
-      <p class="paragraph">{{post.text}}</p>
-      <div class="tag"><a ng-hide="posts.hide && !posts.isAuthor" routerLink="/readPost/{{post.id}}"
+      <p class="paragraph" *ngIf="!post.hide">{{post.text}}</p>
+      <p class="paragraph error" *ngIf="post.hide">This content is been hide by Admin!</p>
+      <div class="tag"><a *ngIf="!post.hide || post.isAuthor" routerLink="/readPost/{{post.id}}"
                           class="line">More&Comment</a>
-<!--        <div *ngIf="posts.isAuthor" class="line"> &#45;&#45; <a href="/editPost/{{post.id}}">Edit</a> &#45;&#45; <a-->
-<!--          href="/deletePost/{{post.id}}">Delete</a></div>-->
-<!--        <div *ngIf="isAdmin &&!posts.hide" class="line"> <<<<a (click)="Hide(i)">Hide(Admin)</a></div>-->
-<!--        <div *ngIf="isAdmin && posts.hide" class="line"> <<<<a (click)="Restore(i)">Restore(Admin)</a>-->
-<!--        </div>-->
+        <div *ngIf="post.isAuthor" class="line"> -- <a routerLink="/editPost/{{post.id}}">Edit</a> -- <a
+          routerLink="/deletePost/{{post.id}}">Delete</a></div>
+        <div *ngIf="isAdmin &&!post.hide" class="line"> <<<<a (click)="Hide(i)">Hide(Admin)</a></div>
+        <div *ngIf="isAdmin && post.hide" class="line"> <<<<a (click)="Restore(i)">Restore(Admin)</a>
+        </div>
         <div class="signature">----------------{{post.author}}</div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { formType } from './formType';
+import {formType} from './formType';
 import {DataService} from '../data.service';
 import {Router} from '@angular/router';
 
@@ -11,17 +11,25 @@ import {Router} from '@angular/router';
 export class SigninComponent implements OnInit {
   form!: formType;
   error = '';
-  constructor(private router:Router) { }
+
+  constructor(private router: Router) {
+  }
+
   onSubmit(): void {
-    if (DataService.findUser(<string> this.form.username,<string> this.form.key)){
-      localStorage.setItem('username',<string> this.form.username);
+    if (DataService.findUser(this.form.username as string, this.form.key as string)) {
+      localStorage.setItem('username', this.form.username as string);
       this.router.navigate(['home']).then(() => alert('Success!'));
-    }else{
+    } else {
       this.error = 'Error!';
     }
   }
+
   ngOnInit(): void {
-    this.form = new formType('','');
+    if (localStorage.getItem('username')){
+      this.router.navigate(['/logout'])
+        .then(() => alert('You must logout your account first!'));
+    }
+    this.form = new formType('', '');
   }
 
 }

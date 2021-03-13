@@ -3,8 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { formType } from './formType';
 import { MustMatch } from './passwordMatch';
 import { Router } from '@angular/router';
-import { Users } from '../dataManage/Users';
-import { User } from '../dataManage/userType';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-regist',
@@ -17,12 +16,19 @@ export class RegistComponent implements OnInit {
   log!: string;
   constructor(private formBuilder: FormBuilder, private router: Router) { }
   onSubmit(): void {
-    localStorage.setItem('username', <string> this.form.username );
-    const registerUser: User = this.form;
-    Users.push(registerUser);
-    this.router.navigate(['/home']);
+    if (DataService.checkUser(this.form.username as string)){
+      alert('This username has been registed!');
+    }else {
+      localStorage.setItem('username', this.form.username as string);
+      DataService.createUser(this.form);
+      this.router.navigate(['/home']);
+    }
   }
   ngOnInit(): void {
+    if (localStorage.getItem('username')){
+      this.router.navigate(['/logout'])
+        .then(() => alert('You must logout your account first!'));
+    }
     this.form = new formType('', '', '', '', '', '');
     this.regist = this.formBuilder.group({
       username: ['', Validators.pattern(/^[a-zA-Z][a-zA-Z0-9_]{5,17}$/)],
